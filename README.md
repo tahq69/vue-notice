@@ -18,7 +18,7 @@ import CripNotice from 'crip-vue-notice'
 Vue.use(CripNotice)
 ```
 
-### Display loading bar
+### Display notification
 ```vue
 // App.vue
 <template>
@@ -38,16 +38,16 @@ Vue.use(CripNotice)
 </template>
 
 <script>
-  export default {
-    methods: {
-      notice (type) {
-        this.$notice[type]({
-            title: `Notice of ${type} type`,
-            description: `Notice of ${type} type was clicked and it popped up!`
-        })
-      },
+export default {
+  methods: {
+    notice (type) {
+      this.$notice[type]({
+        title: `Notice of ${type} type`,
+        description: `Notice of ${type} type was clicked and it popped up!`
+      })
     },
-  }
+  },
+}
 </script>
 ```
 
@@ -55,7 +55,7 @@ Vue.use(CripNotice)
 
 ```bash
 # install dependencies
-> npm install
+> npm i
 
 # serve with hot reload at localhost:8080
 > npm run dev
