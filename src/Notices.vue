@@ -1,21 +1,29 @@
 <template>
-  <div :class="classes" :style="styles">
+  <div
+      :style="styles"
+      :class="['crip-notices', {
+        [`root-${this.className}`]: !!this.className,
+      }]"
+  >
     <transition-group name="fade-horizontal" tag="div">
-      <notice
+      <div
           v-for="notice in notices"
           :key="notice.name"
-          :type="notice.type"
-          :title="notice.title"
-          :name="notice.name"
-          :description="notice.description"
-          :icons="icons"
-          :duration="notice.duration"
-          :styles="notice.styles"
-          :on-close="notice.onClose"
-          :class-name="notice.className"
-          :closable="notice.closable"
-          class="fade-horizontal-item"
-      />
+          class="fade-horizontal"
+      >
+        <notice
+            :type="notice.type"
+            :title="notice.title"
+            :name="notice.name"
+            :description="notice.description"
+            :icons="icons"
+            :duration="notice.duration"
+            :styles="notice.styles"
+            :on-close="notice.onClose"
+            :class-name="notice.className"
+            :closable="notice.closable"
+        />
+      </div>
     </transition-group>
   </div>
 </template>
@@ -36,7 +44,7 @@ export default {
   components: { Notice },
 
   props: {
-    styles: { type: Object, default: () => ({ top: "65px", left: "50%" }) },
+    styles: { type: Object },
     content: { type: String },
     className: { type: String },
   },
@@ -45,12 +53,6 @@ export default {
     return {
       notices: [],
     }
-  },
-
-  computed: {
-    classes() {
-      return ["crip-notice", { [`root-${this.className}`]: !!this.className }]
-    },
   },
 
   methods: {
@@ -76,12 +78,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./styles/styles.scss";
 
-.fade-horizontal-item,
-.fade-horizontal-move {
-  transition: all 0.75s ease-out;
+.crip-notices {
+  width: $notice-width;
+  position: fixed;
+  z-index: 999990;
+}
+
+// Animations
+
+.fade-horizontal {
+  transition: all .7s ease-out;
 }
 
 .fade-horizontal-enter,
@@ -91,7 +100,7 @@ export default {
 }
 
 .fade-horizontal-leave-active {
-  transition: all 0.75s ease-in;
+  transition: all .7s ease-in;
   position: absolute;
   width: 100%;
 }

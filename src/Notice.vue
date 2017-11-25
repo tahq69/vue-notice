@@ -1,7 +1,12 @@
 <template>
   <div
-      :class="classes"
-      :style="styles" 
+      :class="[`crip-notice-${type}`, {
+        [className]: !!className,
+        'crip-notice-closable': closable,
+        'crip-notice-with-desc': withDesc,
+      }]"
+      :style="styles"
+      class="crip-notice"
       @mousemove="clearCloseTimer"
       @mouseover="clearCloseTimer"
       @mouseout="setCloseTimer"
@@ -46,25 +51,15 @@ export default {
     icons: { type: Object },
 
     duration: { type: Number, default: () => 1.5 },
-    styles: { type: Object, default: () => ({ right: "50%" }) },
+    styles: { type: Object, default: () => ({}) },
     closable: { type: Boolean, default: () => false },
     className: { type: String },
     onClose: { type: Function },
   },
 
-  data() {
-    return {
-      withDesc: false,
-    }
-  },
-
   computed: {
-    classes() {
-      return {
-        [this.className]: !!this.className,
-        "crip-notice-closable": this.closable,
-        "crip-notice-with-desc": this.withDesc,
-      }
+    withDesc() {
+      return !!this.description
     },
   },
 
@@ -85,9 +80,9 @@ export default {
     },
 
     close() {
-      //this.clearCloseTimer()
-      //this.onClose()
-      //this.$parent.$parent.close(this.name)
+      this.clearCloseTimer()
+      this.onClose()
+      this.$parent.$parent.close(this.name)
     },
   },
 
@@ -102,9 +97,64 @@ export default {
 }
 </script>
 
-<style scoped>
-body {
-  background-color: gray;
+<style lang="scss" scoped>
+@import "./styles/styles.scss";
+
+.crip-notice {
+  margin-bottom: $notice-margin-bottom;
+  padding: $notice-padding;
+  border-radius: $border-radius-small;
+  box-shadow: $shadow-base;
+  background: #fff;
+  line-height: 1;
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 4px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &-normal:after {
+    background: $primary-color;
+  }
+
+  &-info:after {
+    background: $primary-color;
+  }
+
+  &-success:after {
+    background: $success-color;
+  }
+
+  &-warning:after {
+    background: $warning-color;
+  }
+
+  &-error:after {
+    background: $danger-color;
+  }
+
+  &-close {
+    position: absolute;
+    right: 16px;
+    top: 15px;
+    color: #999;
+    outline: none;
+
+    i {
+      @include close-base(-3px);
+    }
+  }
+
+  &-with-desc .crip-notice-close {
+    top: 11px;
+  }
 }
 </style>
 

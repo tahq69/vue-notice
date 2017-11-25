@@ -26,8 +26,8 @@ class Notice {
   }
 
   config(options) {
-    if (options.top) {
-      this.notices.top = options.top
+    if (options.style) {
+      this.notices.style = options.style
     }
 
     if (options.duration) {

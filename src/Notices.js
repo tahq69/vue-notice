@@ -4,7 +4,7 @@ import Notices from "./Notices.vue"
 
 export default class NotificationWrapper {
   duration = 4.5
-  top = 64
+  style = {}
   icons = undefined
 
   instance
@@ -24,7 +24,7 @@ export default class NotificationWrapper {
     }
 
     const defaults = {
-      styles: { top: `${this.top}px`, right: `0px` },
+      styles: { top: "15px", right: "15px", ...this.style },
     }
     const data = Object.assign(defaults, properties)
 
