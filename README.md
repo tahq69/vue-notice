@@ -9,6 +9,18 @@ A Vue.js project to add global notices on a page. Take a look to [demo page](htt
 > npm i -S crip-vue-notice
 ```
 
+### Prerequisites
+
+- [Font Awesome](http://fontawesome.io/): Add font awesome css to make ikons in notices visible:
+
+```html
+<head>
+    ...
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+```
+
 ### Setup
 ```javascript
 import Vue from 'vue'
