@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/tahq69/vue-notice#readme",
   "dependencies": {
-    "vue": "^2.5.8"
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",

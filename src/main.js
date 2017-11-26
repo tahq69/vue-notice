@@ -48,14 +48,14 @@ class Notice {
   }
 }
 
-export default {
-  install(Vue, options) {
-    const notice = new Notice(Vue, options)
+const install = (Vue, options = {}) => {
+  const notice = new Notice(Vue, options)
 
-    Vue.notice = notice
+  Vue.notice = notice
 
-    Object.defineProperties(Vue.prototype, {
-      $notice: { get: () => notice },
-    })
-  },
+  Object.defineProperties(Vue.prototype, {
+    $notice: { get: () => notice },
+  })
 }
+
+export default install
