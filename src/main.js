@@ -1,3 +1,9 @@
+import "./fonts/fontello.eot"
+import "./fonts/fontello.svg"
+import "./fonts/fontello.ttf"
+import "./fonts/fontello.woff"
+import "./fonts/fontello.woff2"
+import "./styles/fonts.scss"
 import Notices from "./Notices"
 
 class Notice {

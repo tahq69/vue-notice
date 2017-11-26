@@ -10,34 +10,77 @@ console.log(`Creating build of v${version}:`)
 
 module.exports = {
     entry: {
-        build: './src/main.js',
-        example: ['babel-polyfill', './src/example.js']
+      build: './src/main.js',
+      example: ['babel-polyfill', './src/example.js']
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
-        filename: '[name].js',
-        libraryTarget: 'umd'
+      path: path.resolve(__dirname, './dist'),
+      publicPath: '/dist/',
+      filename: '[name].js',
+      libraryTarget: 'umd'
     },
     module: {
-        rules: [{
-            test: /\.vue$/,
-            loader: 'vue-loader',
-            options: {
-                loaders: {}
-                // other vue-loader options go here
-            }
-        }, {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/
-        }, {
-            test: /\.(png|jpg|gif|svg)$/,
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]?[hash]'
-            }
-        },]
+      rules: [{
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader',
+            sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+          }
+        }
+      }, {
+        test: /\.scss$/,
+        use: [
+          { loader: "style-loader"},
+          { loader: "css-loader" },
+          { loader: "sass-loader" }
+        ]
+      }, {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
+      }, {
+        test: /\.svg$/,
+        loader: "url-loader",
+        options: {
+          limit: 65000,
+          mimetype: "image/svg+xml",
+          name: "/src/fonts/[name].[ext]",
+        }
+      }, {
+        test: /\.woff$/,
+        loader: "url-loader",
+        options: {
+          limit: 65000,
+          mimetype: "application/font-woff",
+          name: "/src/fonts/[name].[ext]",
+        }
+      }, {
+        test: /\.woff2$/,
+        loader: "url-loader",
+        options: {
+          limit: 65000,
+          mimetype: "application/font-woff2",
+          name: "/src/fonts/[name].[ext]",
+        }
+      }, {
+        test: /\.[ot]tf$/,
+        loader: "url-loader",
+        options: {
+          limit: 65000,
+          mimetype: "application/octet-stream",
+          name: "/src/fonts/[name].[ext]",
+        }
+      }, {
+        test: /\.eot$/,
+        loader: "url-loader",
+        options: {
+          limit: 65000,
+          mimetype: "mimetype=application/vnd.ms-fontobject",
+          name: "/src/fonts/[name].[ext]",
+        }
+      },]
     },
     resolve: {
         alias: {

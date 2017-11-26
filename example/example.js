@@ -1,5 +1,5 @@
 /*!
-* Crip Vue Notice v1.0.2
+* Crip Vue Notice v1.0.3
 * Forged by Igors Krasjukovs <tahq69@gmail.com>
 * Released under the MIT License.
 */
