@@ -35,15 +35,7 @@ export default {
     },
     title: { type: String, required: true },
     description: { type: String },
-    icons: {
-      type: Object,
-      default: () => ({
-        info: "fa fa-info-circle",
-        success: "fa fa-check-circle",
-        warning: "fa fa-exclamation-circle",
-        error: "fa fa-times-circle",
-      }),
-    },
+    icons: { type: Object },
   },
 
   computed: {

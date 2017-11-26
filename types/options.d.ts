@@ -1,9 +1,10 @@
 export type NoticeType = "error" | "warning" | "success" | "info" | "normal"
+export type Icons = "error" | "warning" | "success" | "info" | "close"
 
 export interface IOptions {
   className?: string
   duration?: number
-  icons?: {[Key in NoticeType]: string}
+  icons?: {[Key in Icons]: string}
   style?: object
 }
 
@@ -12,7 +13,7 @@ export interface INoticeOptions {
   closable?: boolean
   description?: string
   duration?: number
-  icons?: {[Key in NoticeType]: string}
+  icons?: {[Key in Icons]: string}
   onClose?: () => void
   styles?: string
   title: string

@@ -23,7 +23,7 @@
           class="crip-notice-close"
           @click.prevent="close"
       >
-        <i class="icon-times"></i>
+        <i :class="icons.close"></i>
       </a>
     </notice-content>
   </div>
@@ -48,7 +48,16 @@ export default {
     title: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String },
-    icons: { type: Object },
+    icons: {
+      type: Object,
+      default: () => ({
+        info: "fa fa-info-circle",
+        success: "fa fa-check-circle",
+        warning: "fa fa-exclamation-circle",
+        error: "fa fa-times-circle",
+        close: "fa fa-times",
+      }),
+    },
 
     duration: { type: Number, default: () => 1.5 },
     styles: { type: Object, default: () => ({}) },
