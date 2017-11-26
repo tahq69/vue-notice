@@ -17,6 +17,7 @@ class Notice {
   success(options) {
     return this.notices.notice("success", options)
   }
+
   warning(options) {
     return this.notices.notice("warning", options)
   }
@@ -35,11 +36,7 @@ class Notice {
     }
 
     if (options.icons) {
-      this.notices.icons = Object.assign(
-        {},
-        this.notices.icons,
-        options.icons,
-      )
+      this.notices.icons = Object.assign({}, this.notices.icons, options.icons)
     }
   }
 
