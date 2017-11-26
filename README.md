@@ -54,31 +54,12 @@ export default {
 ## Build Setup
 
 ```bash
-# install dependencies
-> npm i
-
-# serve with hot reload at localhost:8080
-> npm run dev
-
-# build for production with minification
-> npm run build
+# install dependencies and serve with hot reload at localhost:8080
+> npm i && npm run dev
 ```
 
 ## Release steps
 
-```bash
-
-# Build assets
-> npm run build
-
-# Commit sources to git repository
-> git add -A
-> git commit -m "[build] v$VERSION"
-
-#update version number
-> npm version $VERSION --message "[release] v$VERSION"
-
-# publish
-> git push
-> npm publish
+```cmd
+./release.bat %$VERSION
 ```
