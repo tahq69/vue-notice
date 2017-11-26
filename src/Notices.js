@@ -1,5 +1,3 @@
-import Vue from "vue"
-
 import Notices from "./Notices.vue"
 
 export default class NotificationWrapper {
@@ -13,7 +11,7 @@ export default class NotificationWrapper {
     this.instance = false
   }
 
-  create(properties) {
+  create(Vue, properties) {
     if (this.instance) {
       // Remove instance if it already exists.
       this.instance.closeAll()

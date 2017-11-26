@@ -1,9 +1,10 @@
 import Notices from "./Notices"
 
 class Notice {
-  constructor() {
+  constructor(Vue, options) {
     this.notices = new Notices()
-    this.notices.create({})
+    this.notices.create(Vue, {})
+    this.config(options)
   }
 
   open(options) {
@@ -47,14 +48,14 @@ class Notice {
   }
 }
 
-export const notice = new Notice()
-
 export default {
   install(Vue, options) {
-    if (options) {
-      notice.config(options)
-    }
+    const notice = new Notice(Vue, options)
 
-    Vue.prototype.$notice = notice
+    Vue.notice = notice
+
+    Object.defineProperties(Vue.prototype, {
+      $notice: { get: () => notice },
+    })
   },
 }

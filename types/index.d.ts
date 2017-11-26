@@ -1,4 +1,4 @@
-import Vue from "vue"
+import { PluginObject, Vue as _Vue } from "vue"
 
 export type NoticeType = "error" | "warning" | "success" | "info" | "normal"
 
@@ -47,5 +47,5 @@ declare module "vue/types/vue" {
 }
 
 export default {
-  install(VueInstance: typeof Vue, options?: IOptions),
-}
+  install(Vue: typeof _Vue, options?: IOptions)
+} as PluginObject<IOptions>
