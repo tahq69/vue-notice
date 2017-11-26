@@ -1,6 +1,6 @@
 {
   "name": "crip-vue-notice",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Vue.js project to add global notices on a page.",
   "main": "dist/build.js",
   "typings": "types/index.d.ts",
