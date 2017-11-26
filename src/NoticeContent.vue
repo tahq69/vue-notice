@@ -38,10 +38,10 @@ export default {
     icons: {
       type: Object,
       default: () => ({
-        info: "icon icon-info-circle",
-        success: "icon icon-check-circle",
-        warning: "icon icon-exclamation-circle",
-        error: "icon icon-times-circle",
+        info: "fa fa-info-circle",
+        success: "fa fa-check-circle",
+        warning: "fa fa-exclamation-circle",
+        error: "fa fa-times-circle",
       }),
     },
   },
@@ -89,7 +89,7 @@ export default {
 
   .crip-notice-icon {
     position: absolute;
-    left: 10px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
