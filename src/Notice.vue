@@ -35,7 +35,7 @@ import NoticeContent from "./NoticeContent.vue"
 const types = ["normal", "info", "success", "warning", "error"]
 
 export default {
-  name: "Notice",
+  name: "CripNotice",
 
   components: { NoticeContent },
 

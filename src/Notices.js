@@ -22,7 +22,7 @@ export default class NotificationWrapper {
     }
 
     const defaults = {
-      styles: { top: "15px", right: "15px", ...this.style },
+      styles: Object.assign({}, { top: "15px", right: "15px" }, this.style),
     }
     const data = Object.assign(defaults, properties)
 

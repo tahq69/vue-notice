@@ -1,6 +1,7 @@
 export type NoticeType = "error" | "warning" | "success" | "info" | "normal"
 
 export interface IOptions {
+  className?: string
   duration?: number
   icons?: {[Key in NoticeType]: string}
   style?: object

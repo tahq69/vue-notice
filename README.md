@@ -2,6 +2,8 @@
 
 A Vue.js project to add global notices on a page. Take a look to [demo page](http://rawgit.com/tahq69/vue-notice/master/index.html)
 
+![Preview](http://rawgit.com/tahq69/vue-notice/master/dist/Capture.PNG)
+
 ## Usage
 
 ### Install

@@ -31,6 +31,7 @@ export default {
       const title = `Notice of ${type} type`
       const description = `Notice of ${type} type was clicked and it popped up!`
       const content = includeDescription ? { title, description } : { title }
+      content.className = "X-Notice"
 
       this.$notice[type](content)
     },

@@ -3,8 +3,8 @@ import Notices from "./Notices"
 class Notice {
   constructor(Vue, options) {
     this.notices = new Notices()
-    this.notices.create(Vue, {})
     this.config(options)
+    this.notices.create(Vue, options)
   }
 
   open(options) {

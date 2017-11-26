@@ -39,13 +39,12 @@ function getUuid() {
 }
 
 export default {
-  name: "Notification",
+  name: "CripNotices",
 
   components: { Notice },
 
   props: {
     styles: { type: Object },
-    content: { type: String },
     className: { type: String },
   },
 

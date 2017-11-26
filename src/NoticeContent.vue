@@ -25,7 +25,7 @@
 const types = ["normal", "info", "success", "warning", "error"]
 
 export default {
-  name: "NoticeContent",
+  name: "CripNoticeContent",
 
   props: {
     type: {
