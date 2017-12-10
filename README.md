@@ -74,6 +74,6 @@ export default {
 
 ## Release steps
 
-```cmd
-./release.bat %$VERSION
+```bash
+> npm run release
 ```
