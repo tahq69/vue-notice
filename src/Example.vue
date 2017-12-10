@@ -36,5 +36,9 @@ export default {
       this.$notice[type](content)
     },
   },
+
+  created() {
+    console.log(`CRIP Vue Notice v${this.$notice.version}`)
+  },
 }
 </script>

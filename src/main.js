@@ -1,61 +1,26 @@
-import Notices from "./Notices"
+import Notice from "./Notice"
 
-class Notice {
-  constructor(Vue, options) {
-    this.notices = new Notices()
-    this.config(options)
-    this.notices.create(Vue, options)
-  }
-
-  open(options) {
-    return this.notices.notice("normal", options)
-  }
-
-  info(options) {
-    return this.notices.notice("info", options)
-  }
-
-  success(options) {
-    return this.notices.notice("success", options)
-  }
-
-  warning(options) {
-    return this.notices.notice("warning", options)
-  }
-
-  error(options) {
-    return this.notices.notice("error", options)
-  }
-
-  config(options) {
-    if (options.style) {
-      this.notices.style = options.style
-    }
-
-    if (options.duration) {
-      this.notices.duration = options.duration
-    }
-
-    if (options.icons) {
-      this.notices.icons = Object.assign({}, this.notices.icons, options.icons)
-    }
-  }
-
-  close(noticeName) {
-    if (noticeName) {
-      this.notices.remove(noticeName)
-    } else return false
-  }
-}
+export let _Vue
 
 const install = (Vue, options = {}) => {
+  // Ensure we install this component only once for required Vue instance.
+  if (install.installed && _Vue === Vue) return
+  install.installed = true
+
+  _Vue = Vue
+
   const notice = new Notice(Vue, options)
 
   Vue.notice = notice
 
-  Object.defineProperties(Vue.prototype, {
-    $notice: { get: () => notice },
-  })
+  Object.defineProperty(Vue.prototype, "$notice", { get: () => notice })
 }
 
 export default install
+
+// Install component if is in browser and Vue instance is already available.
+// This is useful for non bundle usage - if developer adds this packages bundle
+// as script tag in markup.
+if (typeof window !== "undefined" && window.Vue) {
+  window.Vue.use(install)
+}
