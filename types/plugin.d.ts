@@ -52,13 +52,14 @@ export interface Notice {
   success(options: INoticeOptions): string
   warning(options: INoticeOptions): string
 
-  close(uuid: string): void
+  close(name: string): void
   config(options: INoticesOptions): NoticesOptions
 }
-
 
 export declare class Plugin {
   constructor(notice: INoticeOptions)
   static install: Install
   static version: string
+
+  close(): void
 }

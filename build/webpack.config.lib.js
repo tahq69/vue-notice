@@ -86,7 +86,7 @@ module.exports = {
     new webpack.BannerPlugin({
       banner: `/*!
 * Crip Vue Notice v${version}
-* (c) 2017-${new Date().getFullYear} Igors Krasjukovs <tahq69@gmail.com>
+* (c) 2017-${new Date().getFullYear() + 1} Igors Krasjukovs <tahq69@gmail.com>
 * Released under the MIT License.
 */`,
       raw: true,

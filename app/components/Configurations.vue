@@ -18,8 +18,8 @@ export default Vue.extend({
     <div class="row">
       <div class="col-xs-12">
         <p>
-          Some configurations are available only in component registration. More details in
-          sample below.
+          Some configurations may be configured on component installation phase and be overwritten
+          for each notice separately. More details in sample comments below.
         </p>
       </div>
     </div>
@@ -50,7 +50,7 @@ export default Vue.extend({
 
       Vue.extend({
         mounted() {
-          this.$notice.open({
+          this.notice = new CripNotice({
             // Unique name to be able close it programmatically.
             name: "unique-notice-name"
 
@@ -64,19 +64,23 @@ export default Vue.extend({
             onClose: () => console.log("notice now is closed"),
 
             // Custom styles for current notice.
-            styles: { padding: 5px; },
+            styles: { padding: "5px;" },
 
             // Custom duration of current notice.
             duration: 4.5,
 
             // Enables close icon for notice.
             closable: true,
-          }, "normal")
+
+            // Type of the notice: "error" | "warning" | "success" | "info" | "normal"
+            type: "normal"
+          })
         },
 
         methods: {
           close() {
-            this.$notice.close("unique-notice-name")
+            this.notice.close()
+            // or this.$notice.close("unique-notice-name")
           }
         }
       })
