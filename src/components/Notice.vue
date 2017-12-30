@@ -1,40 +1,11 @@
-<template>
-  <div
-      :class="[`crip-notice-${type}`, {
-        [className]: !!className,
-        'crip-notice-closable': closable,
-        'crip-notice-with-desc': withDesc,
-      }]"
-      :style="styles"
-      class="crip-notice"
-      @mousemove="clearCloseTimer"
-      @mouseover="clearCloseTimer"
-      @mouseout="setCloseTimer"
-  >
-    <notice-content
-        :type="type"
-        :title="title"
-        :description="description"
-        :icons="icons"
-    >
-      <a
-          href="#"
-          v-if="closable"
-          class="crip-notice-close"
-          @click.prevent="close"
-      >
-        <i :class="icons.close"></i>
-      </a>
-    </notice-content>
-  </div>
-</template>
+<script lang="ts">
+import Vue from "vue"
 
-<script>
 import NoticeContent from "./NoticeContent.vue"
 
 const types = ["normal", "info", "success", "warning", "error"]
 
-export default {
+export default Vue.extend({
   name: "CripNotice",
 
   components: { NoticeContent },
@@ -43,39 +14,35 @@ export default {
     type: {
       type: String,
       required: true,
-      validator: value => types.indexOf(value) > -1,
+      validator: (value: string) => types.indexOf(value) > -1,
     },
-    title: { type: String, required: true },
-    name: { type: String, required: true },
-    description: { type: String },
-    icons: {
-      type: Object,
-      default: () => ({
-        info: "fa fa-info-circle",
-        success: "fa fa-check-circle",
-        warning: "fa fa-exclamation-circle",
-        error: "fa fa-times-circle",
-        close: "fa fa-times",
-      }),
-    },
-
-    duration: { type: Number, default: () => 1.5 },
-    styles: { type: Object, default: () => ({}) },
-    closable: { type: Boolean, default: () => false },
     className: { type: String },
+    closable: { type: Boolean, required: true },
+    description: { type: String },
+    duration: { type: Number, required: true },
+    icons: { type: Object, required: true },
+    name: { type: String, required: true },
     onClose: { type: Function },
+    styles: { type: Object, default: () => ({}) },
+    title: { type: String, required: true },
   },
 
   computed: {
-    withDesc() {
+    withDesc(): boolean {
       return !!this.description
     },
+  },
+
+  data() {
+    return {
+      closeTimer: 0,
+    }
   },
 
   methods: {
     setCloseTimer() {
       if (this.duration !== 0) {
-        this.closeTimer = setTimeout(() => {
+        this.closeTimer = window.setTimeout(() => {
           this.close()
         }, this.duration * 1000)
       }
@@ -84,14 +51,15 @@ export default {
     clearCloseTimer() {
       if (this.closeTimer) {
         clearTimeout(this.closeTimer)
-        this.closeTimer = null
+        this.closeTimer = 0
       }
     },
 
     close() {
-      this.clearCloseTimer()
       this.onClose()
-      this.$parent.$parent.close(this.name)
+      this.clearCloseTimer()
+      const parent = this.$parent.$parent as any
+      parent.remove(this.name)
     },
   },
 
@@ -103,11 +71,37 @@ export default {
   beforeDestroy() {
     this.clearCloseTimer()
   },
-}
+})
 </script>
 
+<template>
+  <div :class="{
+          [`crip-notice-${type}`]: true,
+          [className]: !!className,
+          'crip-notice-closable': closable,
+          'crip-notice-with-desc': withDesc,
+        }"
+       :style="styles"
+       class="crip-notice"
+       @mousemove="clearCloseTimer"
+       @mouseover="clearCloseTimer"
+       @mouseout="setCloseTimer">
+    <notice-content :type="type"
+                    :title="title"
+                    :description="description"
+                    :icons="icons">
+      <a href="#"
+         v-if="closable"
+         class="crip-notice-close"
+         @click.prevent="close">
+        <i :class="icons.close"></i>
+      </a>
+    </notice-content>
+  </div>
+</template>
+
 <style lang="scss" scoped>
-@import "./styles/styles.scss";
+@import "./../assets/styles.scss";
 
 .crip-notice {
   margin-bottom: $notice-margin-bottom;

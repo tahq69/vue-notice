@@ -1,57 +1,53 @@
+<script lang="ts">
+import Vue from "vue"
+
+const types = ["normal", "info", "success", "warning", "error"]
+
+export default Vue.extend({
+  name: "CripNoticeContent",
+
+  props: {
+    description: { type: String },
+    icons: { type: Object },
+    title: { type: String, required: true },
+    type: { type: String, required: true },
+  },
+
+  computed: {
+    withIcon(): boolean {
+      return this.type !== "normal"
+    },
+
+    withDesc(): boolean {
+      return !!this.description
+    },
+  },
+})
+</script>
+
 <template>
-  <div
-      class="crip-notice-content"
-      :class="{
-        'crip-notice-with-icon': withIcon,
-        'crip-notice-with-desc': withDesc,
-      }"
-  >
-    <span
-        v-if="withIcon"
-        class="crip-notice-icon"
-        :class="[`crip-notice-icon-${type}`]"
-    >
+  <div class="crip-notice-content"
+       :class="{
+         'crip-notice-with-icon': withIcon,
+         'crip-notice-with-desc': withDesc,
+       }">
+    <span v-if="withIcon"
+          class="crip-notice-icon"
+          :class="[`crip-notice-icon-${type}`]">
       <i :class="[`${icons[type]}`]"></i>
     </span>
 
-    <div class="crip-notice-title" v-html="title"></div>
-    <div class="crip-notice-desc" v-html="description"></div>
+    <div class="crip-notice-title"
+         v-html="title"></div>
+    <div class="crip-notice-desc"
+         v-html="description"></div>
 
     <slot/>
   </div>
 </template>
 
-<script>
-const types = ["normal", "info", "success", "warning", "error"]
-
-export default {
-  name: "CripNoticeContent",
-
-  props: {
-    type: {
-      type: String,
-      required: true,
-      validator: value => types.indexOf(value) > -1,
-    },
-    title: { type: String, required: true },
-    description: { type: String },
-    icons: { type: Object },
-  },
-
-  computed: {
-    withIcon() {
-      return this.type !== "normal"
-    },
-
-    withDesc() {
-      return !!this.description
-    },
-  },
-}
-</script>
-
 <style lang="scss" soped>
-@import "./styles/styles.scss";
+@import "./../assets/styles.scss";
 
 .crip-notice-content {
   &.crip-notice-with-desc {

@@ -1,11 +1,11 @@
-import { INotice } from "./notice"
+import { Notice } from "./plugin"
 
 declare module "vue/types/vue" {
   interface Vue {
-    $notice: INotice
+    $notice: Notice
   }
 
   interface VueConstructor {
-    notice: INotice
+    notice: Notice
   }
 }
