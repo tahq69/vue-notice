@@ -9,7 +9,7 @@ export default class Notice {
     this.notices.create(Vue, options)
   }
 
-  open(options) {
+  open(options, type = "normal") {
     return this.notices.notice("normal", options)
   }
 

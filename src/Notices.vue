@@ -18,7 +18,7 @@
             :description="notice.description"
             :icons="icons"
             :duration="notice.duration"
-            :styles="notice.styles"
+            :styles="notice.style"
             :on-close="notice.onClose"
             :class-name="notice.className"
             :closable="notice.closable"

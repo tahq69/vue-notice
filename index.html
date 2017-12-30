@@ -2,22 +2,58 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>vue-bootstrap-modal</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>crip-vue-notice</title>
 
-    <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <!-- Custom Bootstrap -->
+  <link href="dist/styles.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
 </head>
 
 <body>
-    <div id="app">loading...</div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <h1 class="navbar-brand">
+          Crip vue notice
+        </h1>
+      </div>
+      <!-- /.navbar-header -->
 
-    <script src="dist/example.js"></script>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="http://hrefs.crip.lv/home" target="_blank">Blog</a>
+          </li>
+          <!--<li>
+            <a href="http://cm.crip.lv" target="_blank">CM</a>
+          </li>-->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="https://github.com/tahq69" target="_blank">Author</a>
+          </li>
+          <li>
+            <a href="https://github.com/tahq69/vue-notice" target="_blank">Repository</a>
+          </li>
+          <li>
+            <a href="https://github.com/tahq69/vue-notice/issues" target="_blank">Issues</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /#navbar /.navbar-collapse -->
+    </div>
+  </nav>
+
+  <div id="app">loading...</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.8/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js"></script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  <script src="dist/app.js"></script>
 </body>
 
 </html>
